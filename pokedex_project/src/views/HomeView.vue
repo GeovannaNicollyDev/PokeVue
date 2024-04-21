@@ -4,6 +4,7 @@
     <ModalPokemon
       :abrirFecharModal="abrirOuFecharModal"
     />
+    <b-modal ref="meu_modal">MODAL DE TESTE</b-modal>
     <div class="container mt-4">
       <div>
         <input type="text" 
@@ -75,8 +76,9 @@ const handleScroll = () => {
 };
 
 const abrirModal = () => {
-  abrirOuFecharModal.value = true;
-  console.log('VALOR ABRIR', abrirOuFecharModal.value)
+  this.$refs['meu_modal'].show()
+  //abrirOuFecharModal.value = true;
+  // console.log('VALOR ABRIR', abrirOuFecharModal.value)
 
 }
 
