@@ -15,7 +15,7 @@
             :key="pokemon.name">
             <CardPokemon
               :name="pokemon.name"
-              @click="redirectTela(pokemon.name)"
+              @click="redirectTela(pokemon.url)"
           />
           </div>
       </div>
