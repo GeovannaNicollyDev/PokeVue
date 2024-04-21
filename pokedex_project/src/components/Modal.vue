@@ -11,17 +11,13 @@
   </template>
   
   <script>
-  export default {
-    props: ['isOpen', 'selectedItem'],
-    methods: {
-      close() {
-        this.$emit('close');
+    export default {
+      props: ['isOpen', 'selectedItem'],
+      methods: {
+        close() {
+          this.$emit('close');
+        }
       }
-    }
-  };
+    };
   </script>
-  
-  <style>
-  /* Estilos do modal */
-  </style>
   

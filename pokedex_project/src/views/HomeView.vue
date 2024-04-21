@@ -1,28 +1,22 @@
 <template>
   <main>
-    <div class="container text-center">
-      <div class="row justify-content-md-center">
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <CardPokemon/>
-          </div>
-      </div>
-    </div>
     <div class="container mt-4">
       <div>
         <input type="text" 
           v-model="searchTerm" 
           @input="search"
-          placeholder="Digite para buscar">
+          placeholder="Buscar Pokemon">
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <ul class="list-group">
-            <li class="list-group-item" v-for="pokemon in copyListPokemons" :key="pokemon.name" @click="openModal(pokemon)">
-              {{ pokemon.name }}
-            </li>
-              <Modal :isOpen="isModalOpen.value"/>
-          </ul>
-        </div>
+    </div>
+    <div class="container text-center">
+      <div class="row justify-content-md-center">
+          <div class="col-sm-12 col-md-6 col-lg-4" 
+            v-for="pokemon in copyListPokemons" 
+            :key="pokemon.name">
+            <CardPokemon
+              :name="pokemon.name"
+            />
+          </div>
       </div>
     </div>
   </main>
