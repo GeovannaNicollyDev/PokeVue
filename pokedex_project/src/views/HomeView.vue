@@ -1,5 +1,12 @@
 <template>
   <main>
+    <div class="container text-center">
+      <div class="row justify-content-md-center">
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <CardPokemon/>
+          </div>
+      </div>
+    </div>
     <div class="container mt-4">
       <div>
         <input type="text" 
@@ -24,6 +31,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Modal from "@/components/Modal.vue"
+import CardPokemon from "@/components/CardPokemon.vue";
 
 let data = ref([])
 
