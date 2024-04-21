@@ -15,10 +15,6 @@ export default {
     props: {
         name: String
     },
-    methods: {
-    abrirModal() {
-      this.$emit('abrirModal');
-    }
-  }
+
 }
 </script>
