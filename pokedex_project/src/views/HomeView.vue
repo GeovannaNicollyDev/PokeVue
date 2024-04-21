@@ -1,5 +1,7 @@
 <template>
   <main>
+    
+    <ModalPokemon v-if="abrirOuFecharModal"/>
     <div class="container mt-4">
       <div>
         <input type="text" 
@@ -15,6 +17,7 @@
             :key="pokemon.name">
             <CardPokemon
               :name="pokemon.name"
+              @abrirModal="abrirModal"
             />
           </div>
       </div>
@@ -24,8 +27,9 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import Modal from "@/components/Modal.vue"
 import CardPokemon from "@/components/CardPokemon.vue";
+import ModalPokemon from "@/components/ModalPokemon.vue";
+
 
 let data = ref([])
 
@@ -34,8 +38,7 @@ let copyListPokemons = ref([]);
 let offset = 0;
 const limit = 20;
 let loading = false;
-const selectedPokemon = ref(null);
-const isModalOpen = ref(false);
+let abrirOuFecharModal = ref(false);
 
 const loadPokemons = async () => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
@@ -46,15 +49,6 @@ const loadPokemons = async () => {
   loading = false;
 };
 
-const openModal = (pokemon) => {
-  selectedPokemon.value = pokemon;
-  isModalOpen.value = true;
-};
-
-const closeModal = () => {
-  selectedPokemon.value = null;
-  isModalOpen.value = false;
-};
 
 const search = () => {
   copyListPokemons.value = [];
@@ -77,6 +71,12 @@ const handleScroll = () => {
     loadPokemons();
   }
 };
+
+const abrirModal = () => {
+  abrirOuFecharModal.value = true;
+  console.log('VALOR ABRIR', abrirOuFecharModal.value)
+}
+
 
 onMounted(() => {
   loadPokemons();

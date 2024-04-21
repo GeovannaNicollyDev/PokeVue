@@ -4,7 +4,7 @@
             <!--<img src="..." class="card-img-top" alt="...">-->
             <div class="card-body">
                 <p class="card-text">{{ this.name }}</p>
-                <a href="#" class="btn btn-primary">Clique para mais informações</a>
+                <button @click="abrirModal">Abrir Modal</button>
             </div>
         </div>
     </div>
@@ -14,6 +14,11 @@
 export default {
     props: {
         name: String
+    },
+    methods: {
+    abrirModal() {
+      this.$emit('abrirModal');
     }
+  }
 }
 </script>
