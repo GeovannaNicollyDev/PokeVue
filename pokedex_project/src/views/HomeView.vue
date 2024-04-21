@@ -1,10 +1,5 @@
 <template>
   <main>
-    
-    <ModalPokemon
-      :abrirFecharModal="abrirOuFecharModal"
-    />
-    <b-modal ref="meu_modal">MODAL DE TESTE</b-modal>
     <div class="container mt-4">
       <div>
         <input type="text" 
@@ -20,8 +15,8 @@
             :key="pokemon.name">
             <CardPokemon
               :name="pokemon.name"
-              @abrirModal="abrirModal"
-            />
+              @click="redirectTela(pokemon.name)"
+          />
           </div>
       </div>
     </div>
@@ -31,7 +26,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import CardPokemon from "@/components/CardPokemon.vue";
-import ModalPokemon from "@/components/ModalPokemon.vue";
+import { useRouter } from 'vue-router';
 
 
 let data = ref([])
@@ -41,7 +36,8 @@ let copyListPokemons = ref([]);
 let offset = 0;
 const limit = 20;
 let loading = false;
-let abrirOuFecharModal = ref(false);
+
+const router = useRouter();
 
 const loadPokemons = async () => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
@@ -75,11 +71,10 @@ const handleScroll = () => {
   }
 };
 
-const abrirModal = () => {
-  this.$refs['meu_modal'].show()
-  //abrirOuFecharModal.value = true;
-  // console.log('VALOR ABRIR', abrirOuFecharModal.value)
-
+const redirectTela = (name) => {
+  router.push({ name: 'about', 
+                params: { name }
+              });
 }
 
 
